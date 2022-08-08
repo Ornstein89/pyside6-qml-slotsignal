@@ -6,6 +6,10 @@ from PySide6.QtCore import QObject, QUrl, Slot, Signal, Qt
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 
+#
+# for https://stackoverflow.com/a/73277234/12691808
+#
+
 class TestClass(QObject):
     '''
     Object - slot-owner and signal-acceptor
@@ -36,18 +40,18 @@ if __name__ == "__main__":
             type=Qt.ConnectionType.QueuedConnection)
 
     # !!! access nested page1 from python backend
-    # and connect MyPage1.page1_signal() to test_object.test_slot2
-    engine.rootObjects()[0]\
-        .findChild(QObject, "page1_objname")\
-        .page1_signal.connect(
+    qmlpage1 = engine.rootObjects()[0].findChild(QObject, "page1_objname")
+
+    # !!! and connect MyPage1.page1_signal() to test_object.test_slot2
+    qmlpage1.page1_signal.connect(
             test_object.test_slot2,
             type=Qt.ConnectionType.QueuedConnection)
 
     # !!! access nested page2 from python backend
-    # and connect MyPage2.page2_signal() to test_object.test_slot3
-    engine.rootObjects()[0]\
-        .findChild(QObject, "page2_objname")\
-        .page2_signal.connect(
+    qmlpage2 = engine.rootObjects()[0].findChild(QObject, "page2_objname")
+
+    # !!! and connect MyPage2.page2_signal() to test_object.test_slot3
+    qmlpage2.page2_signal.connect(
             test_object.test_slot3,
             type=Qt.ConnectionType.QueuedConnection)
 

@@ -14,7 +14,7 @@ Page{
     signal page2_signal(string input_string)
 
     // !!! important - this name is used
-    // to access page1 from C++ or Python backend
+    // to access page2 from C++ or Python backend
     objectName: "page2_objname"
 
     Button{
