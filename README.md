@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # pyside6-qml-slotsignal
 Demo project for Python (PySide6) - QML slot-signal interaction, included
 * emit `mainapp_signal` signal, declared in root `ApplicationWindow`, from nested `Page`, and python slot callback,
